@@ -18,37 +18,21 @@ permissions:
   contents: read # to fetch code (actions/checkout)
 
 jobs:
-  prepare-yarn-cache-ubuntu:
+  prepare-npm-cache-ubuntu:
     uses: ./.github/workflows/prepare-cache.yml
     with:
       os: ubuntu-latest
-  prepare-yarn-cache-macos:
+  prepare-npm-cache-macos:
     uses: ./.github/workflows/prepare-cache.yml
     with:
       os: macos-latest
-  prepare-yarn-cache-windows:
+  prepare-npm-cache-windows:
     uses: ./.github/workflows/prepare-cache.yml
     with:
       os: windows-latest
 
   prettier:
-    needs: prepare-yarn-cache-ubuntu
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v5
-        with:
-          node-version: lts/*
-          cache: yarn
-      - name: install
-        run: yarn
-      - name: run prettier
-        run: yarn prettier:check
-
-  typecheck:
-    needs: prepare-yarn-cache-ubuntu
+    needs: prepare-npm-cache-ubuntu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -59,12 +43,28 @@ jobs:
           node-version: lts/*
           cache: npm
       - name: install
-        run: yarn
+        run: npm i
+      - name: run prettier
+        run: npm run prettier:check
+
+  typecheck:
+    needs: prepare-npm-cache-ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+      - name: install
+        run: npm i
       - name: run typecheck
         run: npm run typecheck
 
   test-node:
-    needs: prepare-yarn-cache-ubuntu
+    needs: prepare-npm-cache-ubuntu
     runs-on: ubuntu-latest
 
     steps:
@@ -92,23 +92,23 @@ jobs:
       - uses: codecov/codecov-action@v3
   test-ubuntu:
     uses: ./.github/workflows/test.yml
-    needs: prepare-yarn-cache-ubuntu
+    needs: prepare-npm-cache-ubuntu
     with:
       os: ubuntu-latest
   test-macos:
     uses: ./.github/workflows/test.yml
-    needs: prepare-yarn-cache-macos
+    needs: prepare-npm-cache-macos
     with:
       os: macos-latest
   test-windows:
     uses: ./.github/workflows/test.yml
-    needs: prepare-yarn-cache-windows
+    needs: prepare-npm-cache-windows
     with:
       os: windows-latest
 
   docs:
     if: ${{ github.event_name == 'pull_request' }}
-    needs: prepare-yarn-cache-ubuntu
+    needs: prepare-npm-cache-ubuntu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

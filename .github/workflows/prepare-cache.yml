@@ -8,7 +8,7 @@ on:
         type: string
 
 jobs:
-  prepare-yarn-cache:
+  prepare-npm-cache:
     name: Prepare npm cache for ${{ inputs.os }}
     runs-on: ${{ inputs.os }}
 
