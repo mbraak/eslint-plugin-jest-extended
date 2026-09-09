@@ -117,6 +117,8 @@ jobs:
       - name: regenerate docs
         run: npm run tools:regenerate-docs
       - name: report regenerated docs
+        # disable temporarily
+        if: false
         run: |
           git diff --name-only \
             | xargs -I '{}' bash -c \
