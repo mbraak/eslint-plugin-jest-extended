@@ -1,5 +1,7 @@
 # Suggest using `toHaveBeenCalledOnce()` (`prefer-to-have-been-called-once`)
 
+📝 Suggest using `toHaveBeenCalledOnce()`.
+
 🔧 This rule is automatically fixable by the
 [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

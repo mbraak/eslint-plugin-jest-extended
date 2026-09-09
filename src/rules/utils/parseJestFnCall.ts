@@ -88,8 +88,7 @@ interface ParsedGeneralJestFnCall extends BaseParsedJestFnCall {
 }
 
 export interface ParsedExpectFnCall
-  extends BaseParsedJestFnCall,
-    ModifiersAndMatcher {
+  extends BaseParsedJestFnCall, ModifiersAndMatcher {
   type: 'expect';
 }
 
@@ -438,7 +437,7 @@ const describeImportDefAsImport = (
 
   return {
     source: def.parent.source.value,
-    imported: def.node.imported.name,
+    imported: getAccessorValue(def.node.imported),
     local: def.node.local.name,
   };
 };

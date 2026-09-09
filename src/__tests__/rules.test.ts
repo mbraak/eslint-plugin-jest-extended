@@ -1,5 +1,6 @@
 import { existsSync } from 'fs';
 import { resolve } from 'path';
+import { describe, expect, it } from '@jest/globals';
 import plugin from '../';
 
 const ruleNames = Object.keys(plugin.rules);

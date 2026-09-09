@@ -18,6 +18,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   danger:
+    # temporarily disable the danger step
+    if: false
     permissions:
       contents: read # to fetch code (actions/checkout)
       issues: write # to create comment

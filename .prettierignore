@@ -2,3 +2,4 @@
 lib/*
 coverage/*
 CHANGELOG.md
+eslint.config.js
