@@ -1,5 +1,7 @@
 # Suggest using `toBeObject()` (`prefer-to-be-object`)
 
+📝 Suggest using `toBeObject()`.
+
 🔧 This rule is automatically fixable by the
 [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

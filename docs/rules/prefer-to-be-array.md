@@ -1,5 +1,7 @@
 # Suggest using `toBeArray()` (`prefer-to-be-array`)
 
+📝 Suggest using `toBeArray()`.
+
 🔧 This rule is automatically fixable by the
 [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

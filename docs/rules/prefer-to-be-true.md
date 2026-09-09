@@ -1,5 +1,7 @@
 # Suggest using `toBeTrue()` (`prefer-to-be-true`)
 
+📝 Suggest using `toBeTrue()`.
+
 🔧 This rule is automatically fixable by the
 [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
