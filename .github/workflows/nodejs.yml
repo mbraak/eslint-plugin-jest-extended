@@ -81,12 +81,8 @@ jobs:
           install with eslint v10
         run: |
           npm i
-          npm add @typescript-eslint/utils@8
-          # prettier-ignore
-          npm add --dev eslint@$10 @typescript-eslint/eslint-plugin@$8 @typescript-eslint/parser@$8
       - name: run tests
-        # only collect coverage on eslint versions that support dynamic import
-        run: npm run test --coverage ${{ matrix.eslint-version == 8 }}
+        run: npm run test --coverage
         env:
           CI: true
       - uses: codecov/codecov-action@v3
@@ -119,7 +115,7 @@ jobs:
       - name: install
         run: npm i
       - name: regenerate docs
-        run: nopm run tools:regenerate-docs
+        run: npm run tools:regenerate-docs
       - name: report regenerated docs
         run: |
           git diff --name-only \
